@@ -8,12 +8,7 @@ fetch('/res/article.json')
             let element;
             if (media.type === 'image') {
                 element = document.createElement('img');
-                element.src = '/res/T3-L4/media/img/galery/' + media.src;
-            } else if (media.type === 'video') {
-                element = document.createElement('iframe');
-                element.src = media.src;
-                element.allow = "autoplay; encrypted-media";
-                element.allowFullscreen = true;
+                element.src = '/res/media/img/galery/' + media.src;
             }
             element.addEventListener('click', () => {
                 const modalContent = document.getElementById('modal-content');
@@ -43,21 +38,3 @@ fetch('/res/article.json')
         });
     })
     .catch(error => console.error(error));
-
-document.getElementById('modal-close').addEventListener('click', () => {
-    document.getElementById('modal-preview').close();
-});
-
-// Filtering functionality
-const filters = document.getElementById('filters');
-filters.addEventListener('change', (e) => {
-    const type = e.target.value;
-    const items = container.children;
-    for (let i = 0; i < items.length; i++) {
-        if (type === 'all' || items[i].classList.contains(type)) {
-            items[i].style.display = 'block';
-        } else {
-            items[i].style.display = 'none';
-        }
-    }
-});
