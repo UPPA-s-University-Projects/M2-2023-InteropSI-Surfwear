@@ -1,0 +1,16 @@
+@startuml
+actor Commercial as comm
+actor Logisticien as log
+participant ERP as erp
+actor RespBoutique as resp
+participant Compta as compta
+
+comm -> log : Première échange pour faire la liste des commandes
+log -> erp : Vérification de l'état des stocks
+comm -> resp : Validation et envoi du BC
+comm -> log : Envoi du BC
+log -> erp : Enregistrement du BC
+log -> comm : Envoi du BL
+comm -> resp : Envoi du BL
+resp -> compta : MaJ app 
+@enduml
