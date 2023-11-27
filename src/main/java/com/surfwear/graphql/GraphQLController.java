@@ -1,8 +1,6 @@
-package com.example.graphql;
+package com.surfwear.graphql;
 
-import com.example.graphql.entities.Article;
-import com.example.graphql.entities.User;
-import com.example.graphql.entities.Commande;
+import com.surfwear.graphql.entities.Commande;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
