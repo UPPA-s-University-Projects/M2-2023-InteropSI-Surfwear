@@ -4,15 +4,6 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-/bin/
-/target/
-/.classpath
-/.project
-/app/
-/repository
-.mvn/
-.DS_Store
-
 ### STS ###
 .apt_generated
 .classpath

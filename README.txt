@@ -1,0 +1,1 @@
+Generated using Spring Initializr (https://start.spring.io/#!type=gradle-project&language=java&platformVersion=2.3.0.RELEASE&packaging=jar&jvmVersion=11&groupId=com.example&artifactId=rest-service&name=rest-service&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.rest-service&dependencies=web)

@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class GraphQLService {
 
     private List<Article> articles = new ArrayList<>();
-    private List<User> users = new ArrayList<>();
+    private List<Utilisateur> users = new ArrayList<>();
     private final List<Commande> commandes = new ArrayList<>();
     private AtomicInteger articleIdCounter = new AtomicInteger(1);
     private AtomicInteger userIdCounter = new AtomicInteger(1);
@@ -80,6 +80,6 @@ public class GraphQLService {
     //fonction mdp et nom    
     public static boolean verifierAuthentification(String id, String pwd) {
         // Vérifier si l'utilisateur et le mot de passe sont corrects
-        return users.stream().filter(user -> id.equals(id)).collect(Collectors.toList) &&  Users.stream().filter(user -> id.equals(id)).collect(Collectors.toList).equals(pwd);
+        return user.stream().filter(user -> id.equals(id)).collect(Collectors.toList) &&  Utilisateur.stream().filter(user -> id.equals(id)).collect(Collectors.toList).equals(pwd);
     }
 }

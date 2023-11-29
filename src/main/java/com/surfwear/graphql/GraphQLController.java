@@ -1,5 +1,6 @@
 package com.surfwear.graphql;
 
+import com.surfwear.graphql.entities.Article;
 import com.surfwear.graphql.entities.Commande;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +18,28 @@ public class GraphQLController {
     private GraphQLService graphQLService;
 
     @QueryMapping
-    public List<Articles> getAllArticles() {
+    public List<Article> getAllArticles() {
         return graphQLService.getAllArticles();
     }
 
     @QueryMapping
-    public Articles getArticlesById(@Argument("id") String id) {
-        return graphQLService.getArticlesById(id).orElse(null);
+    public Article getArticlesById(@Argument("id") String id) {
+        return graphQLService.getArticleById(id).orElse(null);
     }
 
     @MutationMapping
-    public Articles createArticles(@Argument("title") String title, @Argument("articleId") String articleId) {
-        return graphQLService.createArticles(title, articleId);
+    public Article createArticles(@Argument("title") String title, @Argument("articleId") String articleId) {
+        return graphQLService.createArticle(title, articleId);
     }
 
     @MutationMapping
-    public Articles updateArticles(@Argument("id") String id, @Argument("title") String title) {
-        return graphQLService.updateArticles(id, title);
+    public Article updateArticles(@Argument("id") String id, @Argument("title") String title) {
+        return graphQLService.updateArticle(id, title);
     }
 
     @MutationMapping
     public Boolean deleteArticles(@Argument("id") String id) {
-        return graphQLService.deleteArticles(id);
+        return graphQLService.deleteArticle(id);
     }
 
     @QueryMapping
