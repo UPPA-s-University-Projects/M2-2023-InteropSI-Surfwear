@@ -24,7 +24,7 @@ public class SurfwearController {
 
     //This method returns a user by ID.
     @QueryMapping
-    public Utilisateur getUserById(@Argument("id") String id) {
+    public Utilisateur getUserById(@Argument("id") int id) {
         return surfwearService.getUserById(id).orElse(null);
     }
 
@@ -42,7 +42,7 @@ public class SurfwearController {
     //This method updates an existing user.
     @QueryMapping
     public Utilisateur updateUser(
-        @Argument("id") String id,
+        @Argument("id") int id,
         @Argument("name") String name,
         @Argument("email") String email,
         @Argument("password") String password,
@@ -53,7 +53,7 @@ public class SurfwearController {
 
     //This method deletes a user.
     @QueryMapping
-    public Boolean deleteUser(@Argument("id") String id) {
+    public Boolean deleteUser(@Argument("id") int id) {
         return surfwearService.deleteUser(id);
     }
 
@@ -65,8 +65,8 @@ public class SurfwearController {
 
     //This method returns an article by ID.
     @QueryMapping
-    public Article getArticleById(@Argument("id") String id) {
-        return surfwearService.getArticleById(id).orElse(null);
+    public Article getArticleById(@Argument("id") int id) {
+        return surfwearService.getArticleById(id).orElse(null);//TODO:fix this
     }
 
     //This method creates a new article.
@@ -81,7 +81,7 @@ public class SurfwearController {
     //This method updates an existing article.
     @QueryMapping
     public Article updateArticle(
-        @Argument("id") String id,
+        @Argument("id") int id,
         @Argument("title") String title
     ) {
         return surfwearService.updateArticle(id, title);
@@ -89,7 +89,7 @@ public class SurfwearController {
 
     //This method deletes an article.
     @QueryMapping
-    public Boolean deleteArticle(@Argument("id") String id) {
+    public Boolean deleteArticle(@Argument("id") int id) {
         return surfwearService.deleteArticle(id);
     }
 
@@ -101,14 +101,14 @@ public class SurfwearController {
 
     //This method returns a commande by ID.
     @QueryMapping
-    public Commande getCommandeById(@Argument("id") String id) {
+    public Commande getCommandeById(@Argument("id") int id) {
         return surfwearService.getCommandeById(id).orElse(null);
     }
 
     //This method creates a new commande.
     @QueryMapping
     public Commande createCommande(
-        @Argument("id") String id,
+        @Argument("id") int id,
         @Argument("userId") String userId,
         @Argument("articles") List<String> articles,
         @Argument("prix") float prix,
@@ -120,7 +120,7 @@ public class SurfwearController {
     //This method updates an existing commande.
     @QueryMapping
     public Commande updateCommande(
-        @Argument("id") String id,
+        @Argument("id") int id,
         @Argument("userId") String userId,
         @Argument("articles") List<String> articles,
         @Argument("prix") float prix,
@@ -131,7 +131,7 @@ public class SurfwearController {
 
     //This method deletes a commande.
     @QueryMapping
-    public Boolean deleteCommande(@Argument("id") String id) {
+    public Boolean deleteCommande(@Argument("id") int id) {
         return surfwearService.deleteCommande(id);
     }
 
@@ -143,14 +143,14 @@ public class SurfwearController {
 
     //This method returns an inventaire by ID.
     @QueryMapping
-    public Inventaire getInventaireById(@Argument("id") String id) {
+    public Inventaire getInventaireById(@Argument("id") int id) {
         return surfwearService.getInventaireById(id).orElse(null);
     }
 
     //This method creates a new inventaire.
     @QueryMapping
     public Inventaire createInventaire(
-        @Argument("id") String id,
+        @Argument("id") int id,
         @Argument("articleId") String articleId,
         @Argument("quantite") int quantite
     ) {
@@ -160,7 +160,7 @@ public class SurfwearController {
     //This method updates an existing inventaire.
     @QueryMapping
     public Inventaire updateInventaire(
-        @Argument("id") String id,
+        @Argument("id") int id,
         @Argument("articleId") String articleId,
         @Argument("quantite") int quantite
     ) {
@@ -169,7 +169,7 @@ public class SurfwearController {
 
     //This method deletes an inventaire.
     @QueryMapping
-    public Boolean deleteInventaire(@Argument("id") String id) {
+    public Boolean deleteInventaire(@Argument("id") int id) {
         return surfwearService.deleteInventaire(id);
     }
 
@@ -181,14 +181,14 @@ public class SurfwearController {
 
     //This method returns a paiement by ID.
     @QueryMapping
-    public Paiement getPaiementById(@Argument("id") String id) {
+    public Paiement getPaiementById(@Argument("id") int id) {
         return surfwearService.getPaiementById(id).orElse(null);
     }
 
     //This method creates a new paiement.
     @QueryMapping
     public Paiement createPaiement(
-        @Argument("id") String id,
+        @Argument("id") int id,
         @Argument("commandeId") String commandeId,
         @Argument("montant") float montant,
         @Argument("date") String date
@@ -199,7 +199,7 @@ public class SurfwearController {
     //This method updates an existing paiement.
     @QueryMapping
     public Paiement updatePaiement(
-        @Argument("id") String id,
+        @Argument("id") int id,
         @Argument("commandeId") String commandeId,
         @Argument("montant") float montant,
         @Argument("date") String date
@@ -209,7 +209,7 @@ public class SurfwearController {
 
     //This method deletes a paiement.
     @QueryMapping
-    public Boolean deletePaiement(@Argument("id") String id) {
+    public Boolean deletePaiement(@Argument("id") int id) {
         return surfwearService.deletePaiement(id);
     }
 }

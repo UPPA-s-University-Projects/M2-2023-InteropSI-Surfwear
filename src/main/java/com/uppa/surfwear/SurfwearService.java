@@ -49,8 +49,8 @@ public class SurfwearService {
     }
 
     //This method returns a user by ID.
-    public Optional<Utilisateur> getUserById(String id) {
-        return users.stream().filter(user -> user.getUtilisateurId().equals(id)).findFirst();
+    public Optional<Utilisateur> getUserById(int id) {
+        return users.stream().filter(user -> user.getUtilisateurId()==id).findFirst();
     }
 
     //This method creates a new user.
@@ -64,7 +64,7 @@ public class SurfwearService {
     }
 
     //This method updates an existing user.
-    public Utilisateur updateUser(String id, String name, String email, String password, String role) {
+    public Utilisateur updateUser(int id, String name, String email, String password, String role) {
         //This is the user that will be updated.
         Utilisateur user = getUserById(id).orElse(null);
         //If the user exists, it is updated.
@@ -79,7 +79,7 @@ public class SurfwearService {
     }
 
     //This method deletes a user.
-    public Boolean deleteUser(String id) {
+    public Boolean deleteUser(int id) {
         //This is the user that will be deleted.
         Utilisateur user = getUserById(id).orElse(null);
         //If the user exists, it is deleted.
@@ -97,8 +97,8 @@ public class SurfwearService {
     }
 
     //This method returns an article by ID.
-    public Article getArticleById(String id) {
-        return articles.stream().filter(article -> article.getArticleId().equals(id)).findFirst().orElse(null);
+    public Article getArticleById(int id) {
+        return articles.stream().filter(article -> article.getArticleId()==id).findFirst().orElse(null);
     }
 
     //This method creates a new article.
@@ -112,7 +112,7 @@ public class SurfwearService {
     }
 
     //This method updates an existing article.
-    public Article updateArticle(String id, String title, String articleId) {
+    public Article updateArticle(int id, String title, String articleId) {
         //This is the article that will be updated.
         Article article = getArticleById(id);
         //If the article exists, it is updated.
@@ -125,7 +125,7 @@ public class SurfwearService {
     }
 
     //This method deletes an article.
-    public Boolean deleteArticle(String id) {
+    public Boolean deleteArticle(int id) {
         //This is the article that will be deleted.
         Article article = getArticleById(id);
         //If the article exists, it is deleted.
@@ -143,8 +143,8 @@ public class SurfwearService {
     }
 
     //This method returns an inventaire by ID.
-    public Inventaire getInventaireById(String id) {
-        return inventaires.stream().filter(inventaire -> inventaire.getInventaireId().equals(id)).findFirst().orElse(null);
+    public Inventaire getInventaireById(int id) {
+        return inventaires.stream().filter(inventaire -> inventaire.getInventaireId()==id).findFirst().orElse(null);
     }
 
     //This method creates a new inventaire.
@@ -158,7 +158,7 @@ public class SurfwearService {
     }
 
     //This method updates an existing inventaire.
-    public Inventaire updateInventaire(String id, String title, String inventaireId) {
+    public Inventaire updateInventaire(int id, String title, String inventaireId) {
         //This is the inventaire that will be updated.
         Inventaire inventaire = getInventaireById(id);
         //If the inventaire exists, it is updated.
@@ -171,7 +171,7 @@ public class SurfwearService {
     }
 
     //This method deletes an inventaire.
-    public Boolean deleteInventaire(String id) {
+    public Boolean deleteInventaire(int id) {
         //This is the inventaire that will be deleted.
         Inventaire inventaire = getInventaireById(id);
         //If the inventaire exists, it is deleted.
@@ -189,8 +189,8 @@ public class SurfwearService {
     }
 
     //This method returns a commande by ID.
-    public Commande getCommandeById(String id) {
-        return commandes.stream().filter(commande -> commande.getCommandeId().equals(id)).findFirst().orElse(null);
+    public Commande getCommandeById(int id) {
+        return commandes.stream().filter(commande -> commande.getCommandeId()==id).findFirst().orElse(null);
     }
 
     //This method creates a new commande.
@@ -204,7 +204,7 @@ public class SurfwearService {
     }
 
     //This method updates an existing commande.
-    public Commande updateCommande(String id, String title, String commandeId) {
+    public Commande updateCommande(int id, String title, String commandeId) {
         //This is the commande that will be updated.
         Commande commande = getCommandeById(id);
         //If the commande exists, it is updated.
@@ -217,7 +217,7 @@ public class SurfwearService {
     }
 
     //This method deletes a commande.
-    public Boolean deleteCommande(String id) {
+    public Boolean deleteCommande(int id) {
         //This is the commande that will be deleted.
         com.surfwear.graphql.entities.Commande commande = getCommandeById(id);
         //If the commande exists, it is deleted.
@@ -235,8 +235,8 @@ public class SurfwearService {
     }
 
     //This method returns a Paiement by ID.
-    public Paiement getPaiementById(String id) {
-        return paiements.stream().filter(Paiement -> Paiement.getPaiementId().equals(id)).findFirst().orElse(null);
+    public Paiement getPaiementById(int id) {
+        return paiements.stream().filter(Paiement -> Paiement.getPaiementId()==id).findFirst().orElse(null);
     }
 
     //This method creates a new Paiement.
@@ -250,7 +250,7 @@ public class SurfwearService {
     }
 
     //This method updates an existing Paiement.
-    public Paiement updatePaiement(String id, String title, String PaiementId) {
+    public Paiement updatePaiement(int id, String title, String PaiementId) {
         //This is the Paiement that will be updated.
         Paiement Paiement = getPaiementById(id);
         //If the Paiement exists, it is updated.
@@ -263,7 +263,7 @@ public class SurfwearService {
     }
 
     //This method deletes a Paiement.
-    public Boolean deletePaiement(String id) {
+    public Boolean deletePaiement(int id) {
         //This is the Paiement that will be deleted.
         Paiement paiement = getPaiementById(id);
         //If the Paiement exists, it is deleted.
@@ -281,8 +281,8 @@ public class SurfwearService {
     }
 
     //This method returns a detailCommande by ID.
-    public DetailCommande getDetailCommandeById(String id) {
-        return detailCommandes.stream().filter(detailCommande -> detailCommande.getDetailCommandeId().equals(id)).findFirst().orElse(null);
+    public DetailCommande getDetailCommandeById(int id) {
+        return detailCommandes.stream().filter(detailCommande -> detailCommande.getDetailCommandeId()==id).findFirst().orElse(null);
     }
 
     //This method creates a new detailCommande.
@@ -296,7 +296,7 @@ public class SurfwearService {
     }
 
     //This method updates an existing detailCommande.
-    public DetailCommande updateDetailCommande(String id, String title, String detailCommandeId) {
+    public DetailCommande updateDetailCommande(int id, String title, String detailCommandeId) {
         //This is the detailCommande that will be updated.
         DetailCommande detailCommande = getDetailCommandeById(id);
         //If the detailCommande exists, it is updated.
@@ -309,7 +309,7 @@ public class SurfwearService {
     }
 
     //This method deletes a detailCommande.
-    public Boolean deleteDetailCommande(String id) {
+    public Boolean deleteDetailCommande(int id) {
         //This is the detailCommande that will be deleted.
         DetailCommande detailCommande = getDetailCommandeById(id);
         //If the detailCommande exists, it is deleted.
