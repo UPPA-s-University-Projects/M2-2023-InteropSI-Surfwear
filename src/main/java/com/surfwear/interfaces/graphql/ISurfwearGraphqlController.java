@@ -1,4 +1,4 @@
-package com.uppa.surfwear.interfaces.graphql;
+package com.surfwear.interfaces.graphql;
 
 public interface ISurfwearGraphqlController {
 }
