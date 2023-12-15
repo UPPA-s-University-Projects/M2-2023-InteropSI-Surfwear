@@ -1,15 +1,28 @@
 package com.surfwear.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Article {
 
     private int articleId;
     private String nom;
     private float prix;
-    private String categorie;
+    private Categorie categorie;
     private String description;
     private String img;
 
-    public Article(int articleId, String nom, float prix, String categorie, String description, String img) {
+    /**
+     * @param articleId int id de l'article
+     * @param nom String nom de l'article
+     * @param prix float prix de l'article
+     * @param categorie Categorie categorie de l'article
+     * @param description String description de l'article
+     * @param img String img de l'article
+     */
+    public Article(int articleId, String nom, float prix, Categorie categorie, String description, String img) {
         this.articleId = articleId;
         this.nom = nom;
         this.prix = prix;
@@ -18,71 +31,10 @@ public class Article {
         this.img = img;
     }
 
-    public Article(int articleId, String nom) {
-        this.articleId = articleId;
-        this.nom = nom;
-    }
-
-    public int getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(int articleId) {
-        this.articleId = articleId;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public float getPrix() {
-        return prix;
-    }
-
-    public void setPrix(float prix) {
-        this.prix = prix;
-    }
-
-    public String getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    @Override
-    public String toString() {
-        return "Article{" +
-                "articleId=" + articleId +
-                ", nom='" + nom + '\'' +
-                ", prix=" + prix +
-                ", categorie='" + categorie + '\'' +
-                ", description='" + description + '\'' +
-                ", img='" + img + '\'' +
-                '}';
-    }
-
+    /**
+     * @param o Object
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,6 +48,9 @@ public class Article {
         return getImg().equals(article.getImg());
     }
 
+    /**
+     * @return int
+     */
     @Override
     public int hashCode() {
         int result = getArticleId();
@@ -105,6 +60,21 @@ public class Article {
         result = 31 * result + getDescription().hashCode();
         result = 31 * result + getImg().hashCode();
         return result;
+    }
+  
+    /**
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "Article{" +
+                "articleId=" + articleId +
+                ", nom='" + nom + '\'' +
+                ", prix=" + prix +
+                ", categorie=" + categorie +
+                ", description='" + description + '\'' +
+                ", img='" + img + '\'' +
+                '}';
     }
 }
 

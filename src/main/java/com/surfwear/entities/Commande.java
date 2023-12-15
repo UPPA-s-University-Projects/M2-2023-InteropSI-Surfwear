@@ -1,16 +1,28 @@
 package com.surfwear.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
+@Getter
+@Setter
 public class Commande {
 
-    private String commandeId;
+    private int commandeId;
     private DetailCommande commande;
     private Date dateCommande;
     private String status;
     private double total;
 
-    public Commande(String commandeId, DetailCommande commande, Date dateCommande, String status, double total) {
+    /**
+     * @param commandeId int id de la commande
+     * @param commande DetailCommande detail de la commande
+     * @param dateCommande Date date de la commande
+     * @param status String status de la commande
+     * @param total double total de la commande
+     */
+    public Commande(int commandeId, DetailCommande commande, Date dateCommande, String status, double total) {
         this.commandeId = commandeId;
         this.commande = commande;
         this.dateCommande = dateCommande;
@@ -18,50 +30,45 @@ public class Commande {
         this.total = total;
     }
 
-    public String getCommandeId() {
-        return commandeId;
+    /**
+     * @param o Object
+     * @return boolean
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Commande commande)) return false;
+
+        if (getCommandeId() != commande.getCommandeId()) return false;
+        if (Double.compare(commande.getTotal(), getTotal()) != 0) return false;
+        if (!getCommande().equals(commande.getCommande())) return false;
+        if (!getDateCommande().equals(commande.getDateCommande())) return false;
+        return getStatus().equals(commande.getStatus());
     }
 
-    public void setCommandeId(String commandeId) {
-        this.commandeId = commandeId;
+    /**
+     * @return int
+     */
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = getCommandeId();
+        result = 31 * result + getCommande().hashCode();
+        result = 31 * result + getDateCommande().hashCode();
+        result = 31 * result + getStatus().hashCode();
+        temp = Double.doubleToLongBits(getTotal());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 
-    public DetailCommande getCommande() {
-        return commande;
-    }
-
-    public void setCommande(DetailCommande commande) {
-        this.commande = commande;
-    }
-
-    public Date getDateCommande() {
-        return dateCommande;
-    }
-
-    public void setDateCommande(Date dateCommande) {
-        this.dateCommande = dateCommande;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
+    /**
+     * @return String
+     */
     @Override
     public String toString() {
         return "Commande{" +
-                "commandeId='" + commandeId + '\'' +
+                "commandeId=" + commandeId +
                 ", commande=" + commande +
                 ", dateCommande=" + dateCommande +
                 ", status='" + status + '\'' +
