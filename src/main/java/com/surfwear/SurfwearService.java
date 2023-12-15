@@ -1,6 +1,5 @@
 package com.surfwear;
 
-
 import com.surfwear.entities.*;
 import org.springframework.stereotype.Service;
 
@@ -95,6 +94,7 @@ public class SurfwearService {
         return user;
     }
 
+
     /**
      * This method updates an existing user.
      * @param id int
@@ -173,6 +173,7 @@ public class SurfwearService {
         return article;
     }
 
+
     /**
      * This method updates an existing article.
      * @param id int
@@ -184,7 +185,6 @@ public class SurfwearService {
      * @return Article article
      */
     public Article updateArticle(int id,String nom,float prix,Categorie categorie,String description,String img) {
-
         //This is the article that will be updated.
         Article article = getArticleById(id);
         //If the article exists, it is updated.
@@ -199,6 +199,7 @@ public class SurfwearService {
         //The updated article is returned.
         return article;
     }
+
 
     /**
      * This method deletes an article.
@@ -399,6 +400,7 @@ public class SurfwearService {
         return commande;
     }
 
+  
     /**
      * This method updates an existing commande.
      * @param id int

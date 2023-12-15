@@ -1,14 +1,13 @@
 package com.surfwear;
 
-import com.surfwear.entities.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
-
 import java.util.Date;
 import java.util.List;
-
+import com.surfwear.entities.*;
 
 /**
  * This class is the controller for the Surfwear application.
@@ -23,6 +22,7 @@ import java.util.List;
  * It is annotated with @SpringBootApplication to indicate that it is a Spring Boot application.
  * It is annotated with @Test to indicate that it is a JUnit test.
  */
+
 @Controller
 public class SurfwearController {
     //This annotation tells Spring to inject an instance of GraphQLService into this class.

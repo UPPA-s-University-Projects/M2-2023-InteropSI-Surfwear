@@ -61,7 +61,7 @@ public class Article {
         result = 31 * result + getImg().hashCode();
         return result;
     }
-
+  
     /**
      * @return String
      */
