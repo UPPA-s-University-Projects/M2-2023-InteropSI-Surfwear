@@ -1,4 +1,4 @@
-package com.uppa.surfwear.entities;
+package com.surfwear.entities;
 
 import java.util.Objects;
 

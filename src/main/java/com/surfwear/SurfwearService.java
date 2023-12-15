@@ -1,8 +1,9 @@
-package com.uppa.surfwear;
+package com.surfwear;
 
 
-import com.uppa.surfwear.entities.*;
 import org.springframework.stereotype.Service;
+
+import com.surfwear.entities.*;
 
 import java.util.ArrayList;
 import java.util.List;

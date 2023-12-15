@@ -1,4 +1,4 @@
-package com.uppa.surfwear.entities;
+package com.surfwear.entities;
 
 public class Inventaire {
     private Article article;

@@ -1,4 +1,4 @@
-package com.uppa.surfwear;
+package com.surfwear;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
