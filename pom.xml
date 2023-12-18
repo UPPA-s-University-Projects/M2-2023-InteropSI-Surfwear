@@ -8,7 +8,7 @@
 		<version>3.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.uppa</groupId>
+	<groupId>com.surfwear</groupId>
 	<artifactId>surfwear</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>surfwear</name>
@@ -17,7 +17,7 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-		<dependency>
+	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -68,6 +68,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.tukaani</groupId>
+			<artifactId>xz</artifactId>
+			<version>1.9</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -167,6 +172,13 @@
 			<artifactId>spring-integration-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.11.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.restdocs</groupId>
 			<artifactId>spring-restdocs-mockmvc</artifactId>
@@ -195,6 +207,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>surfwear-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>io.github.deweyjose</groupId>
@@ -208,9 +221,9 @@
 						</goals>
 						<configuration>
 							<schemaPaths>
-								<param>src/main/resources/graphql-client</param>
+								<param>src/main/resources/graphql</param>
 							</schemaPaths>
-							<packageName>com.uppa.surfwear.codegen</packageName>
+							<packageName>com.surfwear.codegen</packageName>
 							<addGeneratedAnnotation>true</addGeneratedAnnotation>
 						</configuration>
 					</execution>
@@ -273,5 +286,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

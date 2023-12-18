@@ -55,7 +55,7 @@ public class SurfwearService {
     private final AtomicInteger detailCommandeIdCounter = new AtomicInteger(1);
 
     //This is the constructor
-    //TODO: Implement to add each of two entities inside the lists
+
 
     /*================================================================================*/
     /* USER */
