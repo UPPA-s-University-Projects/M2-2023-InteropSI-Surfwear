@@ -1,6 +1,7 @@
 package com.surfwear;
 
 
+import com.surfwear.interfaces.graphql.ISurfwearGraphqlController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -24,7 +25,7 @@ import com.surfwear.entities.*;
  */
 
 @Controller
-public class SurfwearController {
+public class SurfwearController implements ISurfwearGraphqlController {
     //This annotation tells Spring to inject an instance of GraphQLService into this class.
     @Autowired
     private SurfwearService surfwearService;
