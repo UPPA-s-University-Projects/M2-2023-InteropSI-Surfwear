@@ -55,7 +55,16 @@ public class SurfwearService {
     private final AtomicInteger detailCommandeIdCounter = new AtomicInteger(1);
 
     //This is the constructor
+    public SurfwearService() {
+        //This is the first user.
+        Utilisateur user1 = new Utilisateur(userIdCounter.getAndIncrement(), "user1", "test", "test", "test");
+        //This is the second user.
+        Utilisateur user2 = new Utilisateur(userIdCounter.getAndIncrement(), "user2", "test", "test", "test");
+        //The users are added to the list of users.
+        users.add(user1);
+        users.add(user2);
 
+    }
 
     /*================================================================================*/
     /* USER */
