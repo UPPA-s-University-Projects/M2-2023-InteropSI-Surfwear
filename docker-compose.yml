@@ -13,6 +13,10 @@ services:
       - DB_PASSWORD=user
     depends_on:
       - db
+    network_mode: bridge
+    links:
+      - db:db
+      - rabbitmq:rabbitmq
   db:
     image: postgres
     restart: always
@@ -20,6 +24,7 @@ services:
       - POSTGRES_DB=surfwear_db
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=user
+    network_mode: bridge
   rabbitmq:
     image: rabbitmq:latest
     environment:
@@ -27,3 +32,6 @@ services:
       - RABBITMQ_DEFAULT_USER=root
     ports:
       - "5672:5672"
+    network_mode: bridge
+    links:
+      - db:db
