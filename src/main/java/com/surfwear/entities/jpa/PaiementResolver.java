@@ -20,7 +20,7 @@ public class PaiementResolver implements GraphQLResolver<Paiement> {
 
     public List<Paiement> getAllPaiements() {
         // Implémentez la méthode dans le service pour récupérer tous les paiements
-        return commandeService.getAllPaiements();
+        return commandeService.getAllPaiement();
     }
 
     public Paiement getPaiementById(int id) {

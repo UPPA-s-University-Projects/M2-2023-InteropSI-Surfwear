@@ -194,5 +194,48 @@ public class InventaireService {
         return null;
     }
 
+    public Categorie createCategorie(String nomCategorie, String description) {
+        Categorie categorie = new Categorie();
+        categorie.setNomCategorie(nomCategorie);
+        categorie.setDescription(description);
+        return categorieRepository.save(categorie);
+    }
+
+    public Categorie updateCategorie(int id, String nomCategorie, String description) {
+        Categorie categorie = categorieRepository.findById(id).orElse(null);
+        if (categorie != null) {
+            categorie.setNomCategorie(nomCategorie);
+            categorie.setDescription(description);
+            return categorieRepository.save(categorie);
+        }
+        return null;
+    }
+
+    public boolean deleteCategorie(int id) {
+        if (categorieRepository.existsById(id)) {
+            categorieRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    public List<Categorie> getAllCategorie() {
+        return categorieRepository.findAll();
+    }
+
+    public Categorie getCategorieById(int id) {
+        return categorieRepository.findById(id).orElse(null);
+    }
+
+    public List<Article> getAllArticles() {
+        return articleRepository.findAll();
+    }
+
+    public Article getArticleById(int id) {
+        return articleRepository.findById(id).orElse(null);
+    }
+
+
+
     // Autres méthodes spécifiques à la gestion des inventaires et des articles...
 }
