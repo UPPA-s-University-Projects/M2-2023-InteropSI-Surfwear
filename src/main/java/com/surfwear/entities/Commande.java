@@ -1,34 +1,46 @@
 package com.surfwear.entities;
 
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
 
 @Getter
 @Setter
+@NoArgsConstructor // Lombok annotation for no-argument constructor
+@Entity
 public class Commande {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int commandeId;
-    private DetailCommande commande;
+
+    @OneToOne // ou @ManyToOne selon votre modèle
+    private DetailCommande detailCommande;
+
+    @Temporal(TemporalType.DATE) // ou TemporalType.TIMESTAMP
     private Date dateCommande;
+
     private String status;
     private double total;
 
     /**
-     * @param commandeId int id de la commande
-     * @param commande DetailCommande detail de la commande
-     * @param dateCommande Date date de la commande
-     * @param status String status de la commande
-     * @param total double total de la commande
+     * @param commandeId     int id de la commande
+     * @param detailCommande DetailCommande detail de la commande
+     * @param dateCommande   Date date de la commande
+     * @param status         String status de la commande
+     * @param total          double total de la commande
      */
-    public Commande(int commandeId, DetailCommande commande, Date dateCommande, String status, double total) {
+    public Commande(int commandeId, DetailCommande detailCommande, Date dateCommande, String status, double total) {
         this.commandeId = commandeId;
-        this.commande = commande;
+        this.detailCommande = detailCommande;
         this.dateCommande = dateCommande;
         this.status = status;
         this.total = total;
     }
+
 
     /**
      * @param o Object
@@ -41,7 +53,7 @@ public class Commande {
 
         if (getCommandeId() != commande.getCommandeId()) return false;
         if (Double.compare(commande.getTotal(), getTotal()) != 0) return false;
-        if (!getCommande().equals(commande.getCommande())) return false;
+        if (!getDetailCommande().equals(commande.getDetailCommande())) return false;
         if (!getDateCommande().equals(commande.getDateCommande())) return false;
         return getStatus().equals(commande.getStatus());
     }
@@ -54,7 +66,7 @@ public class Commande {
         int result;
         long temp;
         result = getCommandeId();
-        result = 31 * result + getCommande().hashCode();
+        result = 31 * result + getDetailCommande().hashCode();
         result = 31 * result + getDateCommande().hashCode();
         result = 31 * result + getStatus().hashCode();
         temp = Double.doubleToLongBits(getTotal());
@@ -69,7 +81,7 @@ public class Commande {
     public String toString() {
         return "Commande{" +
                 "commandeId=" + commandeId +
-                ", commande=" + commande +
+                ", commande=" + detailCommande +
                 ", dateCommande=" + dateCommande +
                 ", status='" + status + '\'' +
                 ", total=" + total +

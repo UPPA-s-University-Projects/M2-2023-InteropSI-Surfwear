@@ -1,26 +1,39 @@
 package com.surfwear.entities;
 
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor // Lombok annotation for no-argument constructor
+@Entity
 public class Article {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int articleId;
+
     private String nom;
+
     private float prix;
+
+    @ManyToOne
     private Categorie categorie;
+
     private String description;
+
     private String img;
 
+
     /**
-     * @param articleId int id de l'article
-     * @param nom String nom de l'article
-     * @param prix float prix de l'article
-     * @param categorie Categorie categorie de l'article
+     * @param articleId   int id de l'article
+     * @param nom         String nom de l'article
+     * @param prix        float prix de l'article
+     * @param categorie   Categorie categorie de l'article
      * @param description String description de l'article
-     * @param img String img de l'article
+     * @param img         String img de l'article
      */
     public Article(int articleId, String nom, float prix, Categorie categorie, String description, String img) {
         this.articleId = articleId;
@@ -61,7 +74,7 @@ public class Article {
         result = 31 * result + getImg().hashCode();
         return result;
     }
-  
+
     /**
      * @return String
      */
