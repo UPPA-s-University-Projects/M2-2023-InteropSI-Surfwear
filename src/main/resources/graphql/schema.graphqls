@@ -66,6 +66,7 @@ type Query {
     getPaiementById(id: ID!): Paiement
 }
 
+
 type Mutation {
     createUser(name: String!, email: String!, password: String!, role: String!): Utilisateur
     updateUser(id: ID!, name: String!, email: String!, password: String!, role: String!): Utilisateur

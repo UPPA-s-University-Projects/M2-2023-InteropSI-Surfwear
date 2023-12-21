@@ -26,12 +26,13 @@ services:
       - POSTGRES_PASSWORD=user
     network_mode: bridge
   rabbitmq:
-    image: rabbitmq:latest
+    image: rabbitmq:3-management
     environment:
       - RABBITMQ_DEFAULT_PASS=root
       - RABBITMQ_DEFAULT_USER=root
     ports:
       - "5672:5672"
+      - "15672:15672"
     network_mode: bridge
     links:
       - db:db
