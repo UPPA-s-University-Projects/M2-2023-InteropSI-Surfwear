@@ -1,21 +1,121 @@
-type Author {
-    id: ID!
-    name: String!
+type Article {
+    articleId: ID!
+    nom: String!
+    prix: Float!
+    categorie: Categorie!
+    description: String
+    img: String
 }
 
-type Book {
-    id: ID!
-    title: String!
-    author: Author!
+type Categorie {
+    categorieId: ID!
+    nomCategorie: String!
+    description: String
+}
+
+type Commande {
+    commandeId: ID!
+    commande: DetailCommande!
+    dateCommande: String!
+    status: String!
+    total: Float!
+}
+
+type DetailCommande {
+    detailCommandeId: ID!
+    article: Article!
+    qte: Int!
+    prixUnitaire: Float!
+}
+
+type Inventaire {
+    inventaireId: ID!
+    article: Article!
+    qteStock: Int!
+    qteReserve: Int!
+}
+
+type Paiement {
+    paiementId: ID!
+    commande: Commande!
+    montant: Float!
+    methode: String!
+    datePaiement: String!
+}
+
+type Utilisateur {
+    utilisateurId: ID!
+    nom: String!
+    email: String!
+    password: String!
+    Role: String!
 }
 
 type Query {
-    getAllBooks: [Book!]!
-    getBookById(id: ID!): Book
+    getAllUsers: [Utilisateur]
+    getUserById(id: ID!): Utilisateur
+    getAllArticles: [Article]
+    getArticleById(id: ID!): Article
+    getAllCategories: [Categorie]
+    getCategorieById(id: ID!): Categorie
+    getAllCommandes: [Commande]
+    getCommandeById(id: ID!): Commande
+    getAllInventaires: [Inventaire]
+    getInventaireById(id: ID!): Inventaire
+    getAllPaiements: [Paiement]
+    getPaiementById(id: ID!): Paiement
 }
 
+
 type Mutation {
-    createBook(title: String!, authorId: ID!): Book
-    updateBook(id: ID!, title: String!): Book
-    deleteBook(id: ID!): Boolean
+    createUser(name: String!, email: String!, password: String!, role: String!): Utilisateur
+    updateUser(id: ID!, name: String!, email: String!, password: String!, role: String!): Utilisateur
+    deleteUser(id: ID!): Boolean
+    createArticle(nom: String!, prix: Float!, categorie: CategorieInput!, description: String, img: String): Article
+    updateArticle(id: ID!, nom: String!, prix: Float!, categorie: CategorieInput!, description: String, img: String): Article
+    deleteArticle(id: ID!): Boolean
+    createCategorie(nomCategorie: String!, description: String): Categorie
+    updateCategorie(id: ID!, nomCategorie: String!, description: String): Categorie
+    deleteCategorie(id: ID!): Boolean
+    createCommande(detailCommande: DetailCommandeInput!, dateCommande: String!, status: String!, total: Float!): Commande
+    updateCommande(id: ID!, commande: DetailCommandeInput!, dateCommande: String!, status: String!, total: Float!): Commande
+    deleteCommande(id: ID!): Boolean
+    createInventaire(article: ArticleInput!, qteStock: Int!, qteReserve: Int!): Inventaire
+    updateInventaire(id: ID!, article: ArticleInput!, qteStock: Int!, qteReserve: Int!): Inventaire
+    deleteInventaire(id: ID!): Boolean
+    createPaiement(commande: CommandeInput!, montant: Float!, methode: String!, datePaiement: String!): Paiement
+    updatePaiement(id: ID!, montant: Float!, methode: String!, date: String!): Paiement
+    deletePaiement(id: ID!): Boolean
 }
+
+input CategorieInput {
+    categorieId: ID!
+    nomCategorie: String!
+    description: String
+}
+
+input DetailCommandeInput {
+    detailCommandeId: ID!
+    article: ArticleInput!
+    qte: Int!
+    prixUnitaire: Float!
+}
+
+input ArticleInput {
+    articleId: ID!
+    nom: String!
+    prix: Float!
+    categorie: CategorieInput!
+    description: String
+    img: String
+}
+
+input CommandeInput {
+    commandeId: ID!
+    commande: DetailCommandeInput!
+    dateCommande: String!
+    status: String!
+    total: Float!
+}
+
+

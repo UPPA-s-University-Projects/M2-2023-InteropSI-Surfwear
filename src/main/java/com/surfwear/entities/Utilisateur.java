@@ -24,7 +24,7 @@ public class Utilisateur {
         this.nom = nom;
         this.email = email;
         this.password = password;
-        Role = role;
+        this.Role = role;
     }
 
     /**
