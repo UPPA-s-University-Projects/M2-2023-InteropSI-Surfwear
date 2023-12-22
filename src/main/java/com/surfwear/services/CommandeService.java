@@ -103,11 +103,11 @@ public class CommandeService {
     }
 
     public List<DetailCommande> getAllDetailCommande() {
-        return DetailCommandeRepository.findAll();
+        return detailCommandeRepository.findAll();
     }
 
     public DetailCommande getDetailCommandeById(int id) {
-        return DetailCommandeRepository.findById(id).orElse(null);
+        return detailCommandeRepository.findById(id).orElse(null);
     }
 
     public DetailCommande createDetailCommande(Article article, int qte, double prixUnitaire) {
@@ -117,11 +117,11 @@ public class CommandeService {
         detailCommande.setQte(qte);
         detailCommande.setPrixUnitaire(prixUnitaire);
 
-        return DetailCommandeRepository.save(detailCommande);
+        return detailCommandeRepository.save(detailCommande);
     }
 
     public DetailCommande updateDetailCommande(int id, Article article, int qte, double prixUnitaire) {
-        DetailCommande detailCommande = DetailCommandeRepository.findById(id).orElse(null);
+        DetailCommande detailCommande = detailCommandeRepository.findById(id).orElse(null);
         if (detailCommande != null) {
             detailCommande.setDetailCommandeId(id);
             detailCommande.setArticle(article);
@@ -132,8 +132,8 @@ public class CommandeService {
     }
 
     public boolean deleteDetailCommande(int id) {
-        if (DetailCommandeRepository.existsById(id)) {
-            DetailCommandeRepository.deleteById(id);
+        if (detailCommandeRepository.existsById(id)) {
+            detailCommandeRepository.deleteById(id);
             return true;
         }
         return false;

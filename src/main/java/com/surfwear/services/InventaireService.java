@@ -61,39 +61,6 @@ public class InventaireService {
         return false;
     }
 
-    public List<Inventaire> getAllInventairesByCategorie(int id) {
-        Categorie categorie = categorieRepository.findById(id).orElse(null);
-        if (categorie != null) {
-            return inventaireRepository.findAllByArticle_Categorie(categorie);
-        }
-        return null;
-    }
-
-    public List<Inventaire> getAllInventairesByArticle(int id) {
-        Article article = articleRepository.findById(id).orElse(null);
-        if (article != null) {
-            return inventaireRepository.findAllByArticle(article);
-        }
-        return null;
-    }
-
-    public List<Inventaire> getAllInventairesByArticleAndCategorie(int idArticle, int idCategorie) {
-        Article article = articleRepository.findById(idArticle).orElse(null);
-        Categorie categorie = categorieRepository.findById(idCategorie).orElse(null);
-        if (article != null && categorie != null) {
-            return inventaireRepository.findAllByArticleAndArticle_Categorie(article, categorie);
-        }
-        return null;
-    }
-
-    public Inventaire getInventaireByArticleAndCategorie(int idArticle, int idCategorie) {
-        Article article = articleRepository.findById(idArticle).orElse(null);
-        Categorie categorie = categorieRepository.findById(idCategorie).orElse(null);
-        if (article != null && categorie != null) {
-            return inventaireRepository.findByArticleAndArticle_Categorie(article, categorie);
-        }
-        return null;
-    }
 
     public Article getArticleByInventaire(int id) {
         Inventaire inventaire = inventaireRepository.findById(id).orElse(null);
@@ -103,58 +70,26 @@ public class InventaireService {
         return null;
     }
 
-    public Categorie getCategorieByInventaire(int id) {
-        Inventaire inventaire = inventaireRepository.findById(id).orElse(null);
-        if (inventaire != null) {
-            return inventaire.getArticle().getCategorie();
-        }
-        return null;
-    }
-
-    public int getQteStockByInventaire(int id) {
-        Inventaire inventaire = inventaireRepository.findById(id).orElse(null);
+    public int getQteStockByInventaire(int inventaireId) {
+        Inventaire inventaire = inventaireRepository.findById(inventaireId).orElse(null);
         if (inventaire != null) {
             return inventaire.getQteStock();
         }
         return -1;
     }
 
-    public int getQteReserveByInventaire(int id) {
-        Inventaire inventaire = inventaireRepository.findById(id).orElse(null);
+    public int getQteReserveByInventaire(int inventaireId) {
+        Inventaire inventaire = inventaireRepository.findById(inventaireId).orElse(null);
         if (inventaire != null) {
             return inventaire.getQteReserve();
         }
         return -1;
     }
 
-    public int getQteDisponibleByInventaire(int id) {
-        Inventaire inventaire = inventaireRepository.findById(id).orElse(null);
+    public int getQteDisponibleByInventaire(int inventaireId) {
+        Inventaire inventaire = inventaireRepository.findById(inventaireId).orElse(null);
         if (inventaire != null) {
             return inventaire.getQteStock() - inventaire.getQteReserve();
-        }
-        return -1;
-    }
-
-    public int getQteStockByArticle(int idArticle) {
-        Article article = articleRepository.findById(idArticle).orElse(null);
-        if (article != null) {
-            return inventaireRepository.findAllByArticle(article).stream().mapToInt(Inventaire::getQteStock).sum();
-        }
-        return -1;
-    }
-
-    public int getQteReserveByArticle(int idArticle) {
-        Article article = articleRepository.findById(idArticle).orElse(null);
-        if (article != null) {
-            return inventaireRepository.findAllByArticle(article).stream().mapToInt(Inventaire::getQteReserve).sum();
-        }
-        return -1;
-    }
-
-    public int getQteDisponibleByArticle(int idArticle) {
-        Article article = articleRepository.findById(idArticle).orElse(null);
-        if (article != null) {
-            return getQteStockByArticle(idArticle) - getQteReserveByArticle(idArticle);
         }
         return -1;
     }

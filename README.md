@@ -20,6 +20,7 @@ docker coppose up -d
 You can find a ready-to-be-deployed package
 here : https://github.com/UPPA-s-University-Projects/M2-InteropSI-2023-Surfwear
 
+Just run the following command :
 ```Bash
-Just run the following command : docker pull ghcr.io/uppa-s-university-projects/m2-interopsi-2023-surfwear:sha256-387bf94efecda6c980193659edd23d75b08a57ad735036151ba1105a49f9af00.sig
+docker pull ghcr.io/uppa-s-university-projects/m2-interopsi-2023-surfwear:sha256-387bf94efecda6c980193659edd23d75b08a57ad735036151ba1105a49f9af00.sig
 ```

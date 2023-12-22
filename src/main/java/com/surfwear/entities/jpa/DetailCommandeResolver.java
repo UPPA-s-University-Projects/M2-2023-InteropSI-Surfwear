@@ -15,7 +15,7 @@ public class DetailCommandeResolver implements GraphQLResolver<DetailCommande> {
 
     @Autowired
     public DetailCommandeResolver(CommandeService commandeService) {
-        this.CommandeService = commandeService;
+        this.commandeService = commandeService;
     }
 
     public List<DetailCommande> getAllDetailCommandes() {
