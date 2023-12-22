@@ -28,7 +28,7 @@ public class ArticleResolver implements GraphQLResolver<Article> {
     }
 
     public Article createArticle(String nom, float prix, Categorie categorie, String description) {
-        return inventaireService.createArticle(nom,description,prix,categorie.getCategorieId());
+        return inventaireService.createArticle(nom, description, prix, categorie.getCategorieId());
     }
 
     public Article updateArticle(int id, String nom, float prix, Categorie categorie, String description) {

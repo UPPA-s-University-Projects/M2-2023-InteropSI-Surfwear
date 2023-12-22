@@ -171,6 +171,5 @@ public class InventaireService {
     }
 
 
-
     // Autres méthodes spécifiques à la gestion des inventaires et des articles...
 }
