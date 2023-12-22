@@ -21,6 +21,7 @@ You can find a ready-to-be-deployed package
 here : https://github.com/UPPA-s-University-Projects/M2-InteropSI-2023-Surfwear
 
 Just run the following command :
+
 ```Bash
 docker pull ghcr.io/uppa-s-university-projects/m2-interopsi-2023-surfwear:sha256-387bf94efecda6c980193659edd23d75b08a57ad735036151ba1105a49f9af00.sig
 ```
