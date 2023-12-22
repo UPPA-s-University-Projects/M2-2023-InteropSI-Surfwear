@@ -1,19 +1,31 @@
 package com.surfwear.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor // Lombok annotation for no-argument constructor
+@Entity
 public class Categorie {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categorieId;
+
     private String nomCategorie;
+
     private String description;
 
     /**
      * @param categorieId  int id de la categorie
      * @param nomCategorie String nom de la categorie
-     * @param description String description de la categorie
+     * @param description  String description de la categorie
      */
     public Categorie(int categorieId, String nomCategorie, String description) {
         this.categorieId = categorieId;

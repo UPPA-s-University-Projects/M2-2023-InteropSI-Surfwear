@@ -7,6 +7,7 @@ COPY pom.xml /usr/src/app
 
 # Compiler l'application
 RUN mvn -f /usr/src/app/pom.xml clean package -DskipTests
+RUN mvn -f /usr/src/app/pom.xml install
 
 # Utiliser une image de base de Java pour l'exécution, correspondant à Java 17
 FROM openjdk:17-jdk-slim

@@ -1,23 +1,37 @@
 package com.surfwear.entities;
 
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+
 @Getter
 @Setter
+@NoArgsConstructor // Lombok annotation for no-argument constructor
+@Entity
 public class Paiement {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int paiementId;
-    private final Commande commande;
+
+    @OneToOne
+    @JoinColumn(name = "commande_id")
+    private Commande commande;
+
     private double montant;
     private String methode;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date datePaiement;
 
     /**
-     * @param PaiementId int id du paiement
-     * @param commande Commande commande du paiement
-     * @param montant double montant du paiement
-     * @param methode String methode du paiement
+     * @param PaiementId   int id du paiement
+     * @param commande     Commande commande du paiement
+     * @param montant      double montant du paiement
+     * @param methode      String methode du paiement
      * @param datePaiement Date date du paiement
      */
     public Paiement(int PaiementId, Commande commande, double montant, String methode, Date datePaiement) {
@@ -26,6 +40,10 @@ public class Paiement {
         this.montant = montant;
         this.methode = methode;
         this.datePaiement = datePaiement;
+    }
+
+    public Paiement(Commande commande) {
+        this.commande = commande;
     }
 
     /**

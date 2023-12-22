@@ -1,21 +1,32 @@
 package com.surfwear.entities;
 
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor // Lombok annotation for no-argument constructor
+@Entity
 public class Inventaire {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int inventaireId;
+
+    @ManyToOne
+    @JoinColumn(name = "article_id")
     private Article article;
+
     private int qteStock;
     private int qteReserve;
 
     /**
      * @param inventaireId int id de l'inventaire
-     * @param article Article article de l'inventaire
-     * @param qteStock int quantite en stock de l'inventaire
-     * @param qteReserve int quantite reservee de l'inventaire
+     * @param article      Article article de l'inventaire
+     * @param qteStock     int quantite en stock de l'inventaire
+     * @param qteReserve   int quantite reservee de l'inventaire
      */
     public Inventaire(int inventaireId, Article article, int qteStock, int qteReserve) {
         this.inventaireId = inventaireId;
